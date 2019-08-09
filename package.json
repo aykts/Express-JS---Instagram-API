@@ -1,0 +1,21 @@
+{
+  "name": "fastapi",
+  "version": "1.0.0",
+  "description": "Fast api for low level developers",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon api.js"
+  },
+  "keywords": [
+    "Fast API",
+    "Easy API"
+  ],
+  "author": "Aykut ŞİMŞEK",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  }
+}
