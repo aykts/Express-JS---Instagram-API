@@ -1,0 +1,26 @@
+
+
+<% data.forEach(function(drink) { %>
+    <li><%= drink.type %> </li>
+<% }); %>
+
+
+<div class="rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3">
+    <div class="flex justify-center mt-5">
+        <img src="https://scontent.cdninstagram.com/vp/8aed073bca9c50c8c35cc48eea0a17b4/5DCD6B3E/t51.2885-19/s150x150/57306164_2238119703170651_4765605195205836800_n.jpg?_nc_ht=scontent.cdninstagram.com" class="rounded-full border-solid border-white border-2 -mt-3">		
+    </div>
+    <div class="text-center px-3 pb-6 pt-2">
+        <h3 class="text-black text-sm bold font-sans">Olivia Dunham</h3>
+        <p class="mt-2 font-sans font-light text-grey-dark">Hello, i'm from another the other side!</p>
+    </div>
+    <div class="flex justify-center pb-3 text-grey-dark">
+        <div class="text-center mr-3 border-r pr-3">
+            <h2><%= data.length %></h2>
+            <span>Post</span>
+        </div>
+        <div class="text-center">
+            <h2>42</h2>
+            <span>Friends</span>
+        </div>
+    </div>
+</div>

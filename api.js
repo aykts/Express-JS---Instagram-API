@@ -1,7 +1,8 @@
 const express = require("express")
+const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
 const path = require("path")
 const app = express()
-const controllerSet = require('./api/routes/index/index')
 
 const PORT = 3000
 
@@ -9,13 +10,19 @@ const PORT = 3000
     app.use('/public', express.static(path.join(__dirname, 'public')))
 /* public dosyasını erişilebilir yap */
 
+/* Ayarlar */ 
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cookieParser());
+/* Ayarlar */ 
+
 /* template engine */
     app.set('view engine','ejs')
-    app.set('views',path.join(__dirname,'./api/views'))
+    app.set('views',path.join(__dirname,'./views'))
 /* template engine */
 
 /* Route ayarları */
-    app.use(controllerSet)
+    app.use(require('./routes'));
+    app.use(require('./routes/instagramRoute'));
 /* Route ayarları */
 
 //app.get('/', (req, res) => res.render(path.join(__dirname,'/api/views/index.ejs')))
