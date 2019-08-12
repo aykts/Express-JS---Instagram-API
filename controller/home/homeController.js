@@ -10,8 +10,6 @@ exports.index = function(req, res){
     if( access_token != ''){
 
         const instagramUrl = `https://api.instagram.com/v1/users/self/?access_token=${access_token}`
-        //const mediaUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=4459339253.b5fd553.c61d500ec280453a9e5b2403528af5c0'
-        
         const title = "İnstagram Uygulaması"
 
         request(instagramUrl, function (error, response, body) {
