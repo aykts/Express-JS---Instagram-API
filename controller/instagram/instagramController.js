@@ -2,9 +2,9 @@ const path = require("path")
 const request = require("request")
 
 const instagramObj = {
-    clienID:'b5fd553e9d924e109867268d76214ff6',
+    clienID:'xxxx',
     redirectUri: 'https://quiet-cove-67229.herokuapp.com/handleApi',
-    secretKey: 'cdf6a7b06a8e4acb802c020f49b29486',
+    secretKey: 'xxxx',
     access_token: ''
 }
 
