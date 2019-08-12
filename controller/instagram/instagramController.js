@@ -1,17 +1,10 @@
 const path = require("path")
 const request = require("request")
 
-const instagramViews = '../../views/instagram/index'
-const profileViews = '../../views/instagram/profile'
-
 const instagramObj = {
     clienID:'b5fd553e9d924e109867268d76214ff6',
     redirectUri: 'http://localhost:3000/handleApi',
     secretKey: 'cdf6a7b06a8e4acb802c020f49b29486'
-}
-
-exports.deneme = function(req, res){
-    res.render(path.join(__dirname,instagramViews))
 }
 
 exports.getToken = function(req, res){
@@ -76,7 +69,6 @@ exports.handleApi = function(req, res){
 
                     const parseBody = JSON.parse(body)
                     
-                    console.log(parseBody)
                     res.cookie('access_token',parseBody.access_token, { maxAge: 900000, httpOnly: true });
                     res.redirect("/");
 
@@ -100,26 +92,24 @@ exports.handleApi = function(req, res){
     }
 }
 
-
 exports.getProfil = function(req, res){
     
-    const instagramUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=4459339253.b5fd553.c61d500ec280453a9e5b2403528af5c0'
+    const instagramUrl = 'https://api.instagram.com/v1/users/self/?access_token=4459339253.b5fd553.50d2372729cb4fd88eb8bd666f591432'
+    //const mediaUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=4459339253.b5fd553.c61d500ec280453a9e5b2403528af5c0'
 
     request(instagramUrl, function (error, response, body) {
        
-        res.json(body)
+        res.setHeader('Content-Type', 'application/json');
 
-        // if (!error && response.statusCode == 200) {
-           
-        //     const bodyData = JSON.parse(body)
+        if (!error && response.statusCode == 200) {
             
-        //     return (path.join(__dirname,profileViews), bodyData)
+            res.end(body);
 
-        // }else{
+        }else{
 
-        //     res.redirect('/')
+            res.end(error)
 
-        // }
+        }
 
     })
 

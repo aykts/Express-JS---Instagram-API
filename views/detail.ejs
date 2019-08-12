@@ -10,26 +10,14 @@
 </head>
 <body class="h-screen font-sans login overflow-hidden">
 
-    <%if (typeof error_description != 'undefined') { %>
-        <div class="bg-indigo-900 text-center py-4 lg:px-4">
-            <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Hata!</span>
-                <span class="font-normal mr-2 text-left flex-auto">Hesabınız bağlanamadı! Detay : <%= error_description %> </span>
-                <a href="/" class="pr-1">
-                    <span class="icon-057"></span>
-                </a>
-            </div>
-        </div>
-    <% } %>
-
     <div class="container mx-auto h-full flex justify-center items-center">
         <div class="w-4/6 ml-auto mr-auto flex content-center">
             
             <% if(access_token != null && access_token != '' && json_data != ''){ %> 
             
-                <div class="lg:w-2/4 md:w-5/6 p-2 ml-auto mr-auto py-10 px-10">
+                <div class="w-full p-2 ml-auto mr-auto py-10 px-10">
                     <div class="flex">
-                        <div class="w-3/4 lg:w-3/4 md:w-4/6 pt-5 overflow-hidden shadow-lg bg-white rounded-lg">
+                        <div class="w-2/6 pt-5 overflow-hidden shadow-lg bg-white rounded-lg">
                             <div class="rounded rounded-t-lg overflow-hidden max-w-xs">
                                 <div class="flex justify-center mt-5">
                                     <img src="<%= json_data['data']['profile_picture'] %>" class="rounded-full border-solid border-white border-2 -mt-3">		
@@ -52,13 +40,36 @@
                                         <span>Takipçi</span>
                                     </div>
                                 </div>
-
                             </div>
 
                         </div>
-                        <div class="w-1/4 lg:w-1/4 md:w-2/6 overflow-hidden shadow-lg bg-white rounded-lg ml-1">
+                        <div class="w-1/6 overflow-hidden shadow-lg bg-white rounded-lg ml-1">
                             
                             <% include menu %>
+            
+                        </div>
+                        <div class="w-3/6 shadow-lg bg-white rounded-lg ml-1 overflow-y-auto" style="height:353px;">
+                            
+                            <div class="max-h-full py-2 px-2">
+
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+                                    deneme içeirk <br>
+
+                            </div>
             
                         </div>
 
@@ -93,20 +104,5 @@
         </div>
     </div>
 
-    <script>
-    
-        const instagramButton = document.getElementById('connectInstagram');
-
-        if(instagramButton){
-            
-            instagramButton.addEventListener('click', function(e){
-
-                instagramButton.innerHTML = '<svg width="24" class="float-left mr-2" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#c5523f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(317.915 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg> bağlanıyor..'
-                
-            });
-            
-        }
-
-    </script>
 </body>
 </html>
