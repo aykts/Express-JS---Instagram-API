@@ -2,9 +2,10 @@ const path = require("path")
 const request = require("request")
 
 const instagramObj = {
-    clienID:'b5fd553e9d924e109867268d76214ff6',
+    clienID:'XXXXX',
     redirectUri: 'http://localhost:3000/handleApi',
-    secretKey: 'cdf6a7b06a8e4acb802c020f49b29486'
+    secretKey: 'XXXXX',
+    access_token: ''
 }
 
 exports.getToken = function(req, res){
@@ -94,8 +95,8 @@ exports.handleApi = function(req, res){
 
 exports.getProfil = function(req, res){
     
-    const instagramUrl = 'https://api.instagram.com/v1/users/self/?access_token=4459339253.b5fd553.50d2372729cb4fd88eb8bd666f591432'
-    //const mediaUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=4459339253.b5fd553.c61d500ec280453a9e5b2403528af5c0'
+    const instagramUrl = `https://api.instagram.com/v1/users/self/?access_token=${instagramObj.access_token}`
+    //const mediaUrl = `https://api.instagram.com/v1/users/self/media/recent/?access_token=${instagramObj.access_token}`
 
     request(instagramUrl, function (error, response, body) {
        
