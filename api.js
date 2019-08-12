@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser')
 const path = require("path")
 const app = express()
 
-const PORT = 3000
+const PORT = 5000
 
 /* public dosyasını erişilebilir yap */
     app.use('/public', express.static(path.join(__dirname, 'public')))
