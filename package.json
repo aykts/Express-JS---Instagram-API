@@ -1,15 +1,13 @@
 {
-  "name": "fastapi",
+  "name": "InstagramAPI",
   "version": "1.0.0",
-  "description": "Fast api for low level developers",
+  "description": "InstagramAPI",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon api.js"
   },
   "keywords": [
-    "Fast API",
-    "Easy API"
+    "Instagram API"
   ],
   "author": "Aykut ŞİMŞEK",
   "license": "MIT",

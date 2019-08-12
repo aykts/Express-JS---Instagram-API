@@ -2,9 +2,9 @@ const path = require("path")
 const request = require("request")
 
 const instagramObj = {
-    clienID:'XXXXX',
+    clienID:'b5fd553e9d924e109867268d76214ff6',
     redirectUri: 'http://localhost:3000/handleApi',
-    secretKey: 'XXXXX',
+    secretKey: 'cdf6a7b06a8e4acb802c020f49b29486',
     access_token: ''
 }
 
