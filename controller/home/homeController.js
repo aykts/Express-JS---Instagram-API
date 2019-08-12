@@ -65,13 +65,11 @@ exports.getDetail = function(req, res){
 
     const detailViews = '../../views/detail'
     const params = req.params.param
-
     const access_token = req.cookies.access_token;
    
     if( access_token != ''){
 
         const instagramUrl = `https://api.instagram.com/v1/users/self/?access_token=${access_token}`
-        const mediaUrl = `https://api.instagram.com/v1/users/self/media/recent/?access_token=${access_token}`
         
         const title = "İnstagram Uygulaması"
 
@@ -104,6 +102,33 @@ exports.getDetail = function(req, res){
         res.redirect("/")
 
     }
+
+}
+
+exports.getTag = function(req, res){
+
+    const params = req.query.tag
+    const access_token = req.cookies.access_token;
+    const mediaUrl = `https://api.instagram.com/v1/users/self/media/recent/?access_token=${access_token}`
+    var _ = require('lodash');
+
+    request(mediaUrl, function (error, response, body) {
+        
+        res.setHeader('Content-Type', 'application/json');
+        if (!error && response.statusCode == 200) {
+            
+            const groupData = JSON.parse(body)
+            const sortData = _.orderBy(groupData, 'data.likes.count', 'asc');
+            
+            res.end(JSON.stringify(sortData))
+
+        }else{
+
+            res.end({ "status": false })
+
+        }
+
+    })
 
 }
 

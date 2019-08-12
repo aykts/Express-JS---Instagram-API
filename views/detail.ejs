@@ -50,24 +50,18 @@
                         </div>
                         <div class="w-3/6 shadow-lg bg-white rounded-lg ml-1 overflow-y-auto" style="height:353px;">
                             
-                            <div class="max-h-full py-2 px-2">
+                            <div class="h-full py-1 px-1" id="load-div">
 
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
-                                    deneme içeirk <br>
+                                <div class="h-full flex justify-center items-center">
+
+                                    <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-heart">
+                                        <g transform="translate(50 50)">
+                                            <path ng-attr-fill="{{config.color}}" d="M40.7-34.3c-9.8-9.8-25.6-9.8-35.4,0L0-29l-5.3-5.3c-9.8-9.8-25.6-9.8-35.4,0l0,0c-9.8,9.8-9.8,25.6,0,35.4l5.3,5.3L-23,18.7l23,23l23-23L35.4,6.3L40.7,1C50.4-8.8,50.4-24.6,40.7-34.3z" fill="#ff727d" transform="scale(1.07673 1.07673)">
+                                                <animateTransform attributeName="transform" type="scale" calcMode="spline" values="0.9859999999999999;1.16;0.8699999999999999;1.044;0.9859999999999999;0.9279999999999999" keyTimes="0;0.05;0.39;0.45;0.6;1" dur="1s" keySplines="0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1" begin="0s" repeatCount="indefinite"></animateTransform>
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
 
                             </div>
             
@@ -78,7 +72,98 @@
                         aykut.simsekk@gmail.com
                     </div>
                 </div>
-            
+               
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+                <script>
+                
+                    let imageDiv = '<div class="flex flex-wrap">';
+
+                    const selectedMenu  = "<%= selectedMenu  %>";
+                    
+                    $.ajax({
+                        method : "GET",
+                        url: "/get-tag",
+                        data: {
+                            tag: "<%= selectedMenu %>"
+                        },
+                        success: (result) => {
+
+                            for(var r = 0; r < result[1].length; r++){
+
+                                 if (selectedMenu == "like"){ 
+                                
+                                    imageDiv += '<div class="w-2/6 px-1 py-1">';
+                                        imageDiv += '<div class="relative">';
+                                            imageDiv += '<img src="'+result[1][r]["images"]["low_resolution"]["url"]+'" />';
+                                            imageDiv += '<span class="absolute left-0 bottom-0 py-1 px-2 w-full text-xs bg-green-500 text-white"><span class="icon-008"></span> '+result[1][r]["likes"]["count"]+' beğeni</span>';
+                                        imageDiv += '</div>';
+                                    imageDiv += '</div>';
+
+                                }else if(selectedMenu == "tags"){
+
+                                    if(result[1][r]["tags"] != ""){
+
+                                        imageDiv += '<div class="relative py-1 px-1">';
+                                            imageDiv += '<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#'+result[1][r]["tags"]+'</span>';
+                                        imageDiv += '</div>';
+                                        
+                                    }
+
+                                }else if(selectedMenu == "watching"){
+
+                                    if(result[1][r]["video_views"] != undefined){
+
+                                        imageDiv += '<div class="w-2/6 px-1 py-1">';
+                                            imageDiv += '<div class="relative">';
+                                                imageDiv += '<img src="'+result[1][r]["images"]["low_resolution"]["url"]+'" />';
+                                                imageDiv += '<span class="absolute left-0 bottom-0 py-1 px-2 w-full text-xs bg-green-500 text-white"><span class="icon-026"></span> '+result[1][r]["video_views"]+' izlenme</span>';
+                                            imageDiv += '</div>';
+                                        imageDiv += '</div>';
+                                        
+                                    }
+
+                                }else if(selectedMenu == "filter"){
+
+                                    if(result[1][r]["filter"] != ''){
+
+                                        imageDiv += '<div class="w-2/6 px-1 py-1">';
+                                            imageDiv += '<div class="relative">';
+                                                imageDiv += '<img src="'+result[1][r]["images"]["low_resolution"]["url"]+'" />';
+                                                imageDiv += '<span class="absolute left-0 bottom-0 py-1 px-2 w-full text-xs bg-green-500 text-white"><span class="icon-039"></span> '+result[1][r]["filter"]+'</span>';
+                                            imageDiv += '</div>';
+                                        imageDiv += '</div>';
+                                        
+                                    }
+
+                                }else if(selectedMenu == "comments"){
+
+                                    if(result[1][r]["comments"] != ''){
+
+                                        imageDiv += '<div class="w-2/6 px-1 py-1">';
+                                            imageDiv += '<div class="relative">';
+                                                imageDiv += '<img src="'+result[1][r]["images"]["low_resolution"]["url"]+'" />';
+                                                imageDiv += '<span class="absolute left-0 bottom-0 py-1 px-2 w-full text-xs bg-green-500 text-white"><span class="icon-004"></span> '+result[1][r]["comments"]["count"]+' yorum</span>';
+                                            imageDiv += '</div>';
+                                        imageDiv += '</div>';
+
+                                    }
+
+                                }
+                            }
+
+                            imageDiv += '</div>';
+                            $("#load-div").html(imageDiv)
+
+                        },
+                        error: function () {
+                            
+                            alert("Hata oluştu!")
+                            
+                        }
+                    });
+
+                </script>
+
             <% }else{ %>
             
                 <div class="w-2/3 p-2 ml-auto mr-auto">
