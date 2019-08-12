@@ -27,4 +27,4 @@ const PORT = 5000
 
 //app.get('/', (req, res) => res.render(path.join(__dirname,'/api/views/index.ejs')))
 
-app.listen(PORT)
+app.listen(process.env.PORT || PORT)
